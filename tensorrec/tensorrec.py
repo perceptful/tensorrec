@@ -916,7 +916,7 @@ class TensorRec(object):
         model._attach_graph_hooks()
         return model
     
-    def export(directory_path, model_version):
+    def export(self, directory_path, model_version):
         """
         Exports model and saves it to directory_path for Tensorflow serving.
         :param directory_path: str
@@ -927,7 +927,7 @@ class TensorRec(object):
         export_path = os.path.join(
             compat.as_bytes(export_path_base),
             compat.as_bytes(str(FLAGS.model_version)))
-        print 'Exporting trained model to', export_path
+        print('Exporting trained model to'), export_path
         builder = tf.saved_model.builder.SavedModelBuilder(export_path)
         builder.add_meta_graph_and_variables(
             sess, [tf.saved_model.tag_constants.SERVING],
