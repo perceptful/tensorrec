@@ -924,12 +924,9 @@ class TensorRec(object):
         :return:
         """
         export_path_base = directory_path
-        export_path = os.path.join(
-            export_path_base,
-            str(tf.app.flags.FLAGS.model_version))
+        export_path = os.path.join(export_path_base,str(tf.app.flags.FLAGS.model_version))
         print('Exporting trained model to'), export_path
-        tf.saved_model.simple_save(get_session,
-            export_path,
+        tf.saved_model.simple_save(get_session, export_path,
             inputs={"x": self.tf_n_sampled_items},
             outputs={"z": self.tf_similar_items_ids})
 
