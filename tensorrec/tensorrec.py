@@ -925,8 +925,8 @@ class TensorRec(object):
         """
         export_path_base = directory_path
         export_path = os.path.join(
-            tf.compat.as_bytes(export_path_base),
-            tf.compat.as_bytes(str(tf.app.flags.FLAGS.model_version)))
+            export_path_base,
+            str(tf.app.flags.FLAGS.model_version))
         print('Exporting trained model to'), export_path
         tf.saved_model.simple_save(get_session,
             export_path,
